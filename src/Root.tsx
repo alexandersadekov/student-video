@@ -2,6 +2,7 @@ import { Composition } from "remotion";
 import { MotionExamples } from "./MotionExamples";
 import { CarouselStory } from "./CarouselStory";
 import { PromptExamples } from "./PromptExamples";
+import { StyleDemo } from "./StyleDemo";
 import { ImportedCompositions } from "./generated/Registry";
 import { LocalCompositions } from "./local/Local";
 import "./index.css";
@@ -34,6 +35,32 @@ export const RemotionRoot = () => (
       fps={25}
       width={1080}
       height={1920}
+    />
+    <Composition
+      id="Style1-Split"
+      component={StyleDemo}
+      durationInFrames={200}
+      fps={25}
+      width={1080}
+      height={1920}
+      defaultProps={{
+        showGuides: true,
+        fullScreenExplanation: false,
+        lightTheme: false,
+      }}
+    />
+    <Composition
+      id="Style2-Fullscreen"
+      component={StyleDemo}
+      durationInFrames={200}
+      fps={25}
+      width={1080}
+      height={1920}
+      defaultProps={{
+        showGuides: true,
+        fullScreenExplanation: true,
+        lightTheme: false,
+      }}
     />
     <ImportedCompositions />
     <LocalCompositions />

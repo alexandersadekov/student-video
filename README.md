@@ -21,13 +21,20 @@
 | --- | --- |
 | `src/Root.tsx` | список композиций шаблона |
 | `src/MotionExamples.tsx`, `src/CarouselStory.tsx`, `src/PromptExamples.tsx`, `src/MontageStory.tsx` | готовые сцены, которые можно переиспользовать |
+| `src/StyleDemo.tsx` | демо двух стилей: `Style1-Split` и `Style2-Fullscreen` |
 | `src/ProjectGuides.tsx` | сетка и безопасные зоны поверх кадра |
 | `scripts/import-video.py` | импорт видео: распознавание речи, удаление пауз, субтитры |
 | `scripts/apply-research.py` | скачивание проверенных материалов и пересборка ролика со сценами |
 | `MONTAGE_RULES.md`, `AGENTS.md` | правила монтажа и инструкция для ИИ-агента |
 
-После клонирования доступны три композиции: `Motion-Examples`, `Scene-Carousel`, `Scene-Prompts`.
-Свои ролики появятся рядом после первого импорта.
+После клонирования доступны пять композиций: `Motion-Examples`, `Scene-Carousel`,
+`Scene-Prompts`, а также `Style1-Split` и `Style2-Fullscreen` — витрина двух стилей
+на обезличенном материале. Свои ролики появятся рядом после первого импорта.
+
+Стиль переключается пропом `fullScreenExplanation` в Inspector у любой композиции:
+`false` — компоновка 50/50 (графика сверху, человек снизу, субтитры Y=960),
+`true` — полноэкранная перебивка (камера гаснет, субтитры Y=1420). `lightTheme`
+меняет тему сцены, `colorGrade` — мягкую цветокоррекцию камеры.
 
 **Не попадает в git** (см. `.gitignore`):
 
