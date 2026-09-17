@@ -1,9 +1,9 @@
 {
   "name": "student-video",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Шаблон монтажа вертикального видео на Remotion: импорт, субтитры, сцены",
   "repository": {},
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@remotion/captions": "4.0.525",
