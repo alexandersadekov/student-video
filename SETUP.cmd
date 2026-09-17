@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
 where node >nul 2>nul || (echo Install Node.js LTS first. & pause & exit /b 1)
-where python >nul 2>nul || (echo Install Python 3.11 or 3.12 first. & pause & exit /b 1)
+where python >nul 2>nul || (echo Install Python 3.11 or newer first. & pause & exit /b 1)
 where ffmpeg >nul 2>nul || (echo Install FFmpeg and add it to PATH first. & pause & exit /b 1)
 call npm install
 if errorlevel 1 (pause & exit /b 1)

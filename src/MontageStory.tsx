@@ -83,13 +83,13 @@ const Wave = ({ f, cut = false }: { f: number; cut?: boolean }) => (
 export const MontageStory = ({
   mode,
   lightTheme = false,
-  // Путь к исходнику внутри public/. Задаётся композицией, чтобы сцена не была
-  // привязана к конкретному проекту.
-  sourceFile = "clip.mp4",
+  // Путь к исходнику внутри public/. Обязателен: у сцены нет своего видео, а
+  // дефолт указывал бы на файл, которого в шаблоне нет.
+  sourceFile,
 }: {
   mode: "edit" | "process" | "compare";
   lightTheme?: boolean;
-  sourceFile?: string;
+  sourceFile: string;
 }) => {
   const source = staticFile(sourceFile);
   const f = useCurrentFrame();

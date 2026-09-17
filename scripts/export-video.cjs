@@ -4,7 +4,6 @@ const {spawn} = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 process.chdir(root);
 (async () => {
-  const rl = readline.createInterface({input:process.stdin,output:process.stdout});
   // Список композиций спрашиваем у Remotion: он знает и шаблонные, и импортированные,
   // и личные из src/local, поэтому здесь нет захардкоженных названий.
   console.log('Reading compositions...');
@@ -18,6 +17,9 @@ process.chdir(root);
   const ids=listed.trim().split(/\s+/).filter(Boolean);
   if(!ids.length)throw Error('No compositions found');
   ids.forEach((id,i)=>console.log(`${i+1}. ${id}`));
+  // Интерфейс ввода открываем после чтения списка: пока идёт сборка, stdin может
+  // закрыться, и вопросы остались бы без ответа.
+  const rl = readline.createInterface({input:process.stdin,output:process.stdout});
   const i=Number(await rl.question('Video number: '))-1;
   if(!Number.isInteger(i)||!ids[i])throw Error('Invalid video number');
   const quality=await rl.question('1 = compact 1080p / 2 = draft 540p: ');
