@@ -1,7 +1,33 @@
-node_modules
-dist
-.DS_Store
-.env
+# Зависимости и сборка
+node_modules/
+out/
+.cache/
+.venv/
+__pycache__/
+*.log
 
-# Ignore the output video from Git but not videos you import into src/.
-out
+# Секреты
+.env
+.env.*
+
+# Модель распознавания речи — качается автоматически при первом импорте
+.models/
+
+# Исходники учеников и личный материал: в репозиторий не попадают
+public/projects/
+public/clip.mp4
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.m4a
+
+# Композиции, которые генерирует scripts/import-video.py
+src/generated/
+
+# Личные композиции (пилот, эксперименты) — только на твоём диске
+src/local/
+
+# Кадр из личного ролика и снимок утверждённого пилота
+public/montage4-poster.jpg
+presets/approved-pilot/

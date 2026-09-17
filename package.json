@@ -6,11 +6,13 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@remotion/captions": "4.0.525",
     "@remotion/cli": "4.0.525",
+    "@remotion/media": "4.0.525",
+    "@remotion/tailwind-v4": "4.0.525",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.525",
-    "@remotion/tailwind-v4": "4.0.525",
     "tailwindcss": "4.0.0"
   },
   "devDependencies": {
@@ -22,10 +24,13 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
-    "build": "remotion bundle",
+    "dev": "node scripts/ensure-generated.cjs && remotion studio",
+    "build": "node scripts/ensure-generated.cjs && remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render:compact": "remotion render src/index.ts Motion-Examples out/compact.mp4 --codec=h264 --video-bitrate=5M --audio-codec=aac --audio-bitrate=128k --concurrency=1",
+    "render:draft": "remotion render src/index.ts Motion-Examples out/draft.mp4 --codec=h264 --scale=0.5 --crf=25 --audio-bitrate=128k --concurrency=1",
+    "postinstall": "node scripts/ensure-generated.cjs && node scripts/fix-studio-shortcuts.cjs"
   },
   "sideEffects": [
     "*.css"
