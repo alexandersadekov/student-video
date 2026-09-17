@@ -1,5 +1,6 @@
 """Local, non-destructive import. Every run creates an independent editable composition."""
 import argparse
+from registry import add_entry
 import datetime
 import html
 import json
@@ -205,23 +206,9 @@ def main():
     generated = ROOT / "src" / "generated"
     generated.mkdir(exist_ok=True)
     (generated / f"{ident}.tsx").write_text("\n".join(lines), encoding="utf-8")
-    entries_file = generated / "registry.json"
-    entries = json.loads(entries_file.read_text()) if entries_file.exists() else []
-    flag_keys = ("fullScreenExplanation", "lightTheme", "colorGrade")
-    entries.append({"id": ident, "duration": total, "fps": fps,
-                    "props": {k: bool(cfg.get(k, k == "colorGrade")) for k in flag_keys}})
-    save(entries_file, entries)
-    registry = ["import {Composition} from 'remotion';"]
-    registry += [f"import {{ImportedVideo as Video{i}}} from './{e['id']}';" for i, e in enumerate(entries)]
-    registry += ['export const ImportedCompositions=()=> <>']
-    for i, e in enumerate(entries):
-        props = e.get("props", {})
-        flags = ",".join(f"{k}:{str(bool(props.get(k, k == 'colorGrade'))).lower()}" for k in flag_keys)
-        registry.append(f'<Composition id="{e["id"]}" component={{Video{i}}} durationInFrames={{{e["duration"]}}} fps={{{e["fps"]}}} width={{1080}} height={{1920}} defaultProps={{{{showGuides:true,{flags}}}}}/>')
-    registry.append('</>;')
-    (generated / "Registry.tsx").write_text(chr(10).join(registry), encoding="utf-8")
+    registry_file = add_entry(ROOT, ident, total, fps, cfg)
     # Separate authored nodes and lines are necessary for Studio's source editing.
-    run([shutil.which("node") or "node", ROOT / "node_modules/prettier/bin/prettier.cjs", "--write", generated / f"{ident}.tsx", generated / "Registry.tsx"])
+    run([shutil.which("node") or "node", ROOT / "node_modules/prettier/bin/prettier.cjs", "--write", generated / f"{ident}.tsx", registry_file])
     report = {"composition": ident, "reviewRequired": ["Проверить первое слово и вдохи", "Прослушать каждую склейку", "Проверить текст и смысловые пары субтитров", "Настроить кадрирование и уровень глаз", "Отметить дубли вручную: автоматическое смысловое удаление выключено", "Для объяснений указать таймкод и материал: скриншот, запись экрана или схема. До этого камера с акцентом, без выдуманных карточек."], "captions": captions, "removed": removed, "visualScenes": scenes}
     save(folder / "review.json", report)
     transcript = " ".join(c["text"] for c in captions)
