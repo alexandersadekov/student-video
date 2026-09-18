@@ -1,134 +1,134 @@
 [
   {
-    "name": "Alarm clock",
     "file": "alarm_clock.png",
-    "bytes": 42751,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Alarm clock/3D/alarm_clock_3d.png"
+    "size": "96x96",
+    "bytes": 16932,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Bell",
     "file": "bell.png",
-    "bytes": 25849,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Bell/3D/bell_3d.png"
+    "size": "96x96",
+    "bytes": 11639,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Brain",
     "file": "brain.png",
-    "bytes": 37483,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Brain/3D/brain_3d.png"
+    "size": "96x96",
+    "bytes": 14601,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Calendar",
     "file": "calendar.png",
-    "bytes": 41180,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Calendar/3D/calendar_3d.png"
+    "size": "96x96",
+    "bytes": 6196,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Chart increasing",
     "file": "chart_increasing.png",
-    "bytes": 42157,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Chart increasing/3D/chart_increasing_3d.png"
+    "size": "96x96",
+    "bytes": 13104,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Check mark button",
     "file": "check_mark_button.png",
-    "bytes": 34052,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Check mark button/3D/check_mark_button_3d.png"
+    "size": "96x96",
+    "bytes": 4297,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Clapper board",
     "file": "clapper_board.png",
-    "bytes": 29193,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Clapper board/3D/clapper_board_3d.png"
+    "size": "96x96",
+    "bytes": 9655,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Cross mark",
     "file": "cross_mark.png",
-    "bytes": 23713,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Cross mark/3D/cross_mark_3d.png"
+    "size": "96x96",
+    "bytes": 2262,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Eyes",
     "file": "eyes.png",
-    "bytes": 38982,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Eyes/3D/eyes_3d.png"
+    "size": "96x96",
+    "bytes": 6795,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Fire",
     "file": "fire.png",
-    "bytes": 26826,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Fire/3D/fire_3d.png"
+    "size": "96x96",
+    "bytes": 9310,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Gear",
     "file": "gear.png",
-    "bytes": 39892,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Gear/3D/gear_3d.png"
+    "size": "96x96",
+    "bytes": 18489,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Hourglass done",
     "file": "hourglass_done.png",
-    "bytes": 33015,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Hourglass done/3D/hourglass_done_3d.png"
+    "size": "96x96",
+    "bytes": 11627,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Light bulb",
     "file": "light_bulb.png",
-    "bytes": 22450,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Light bulb/3D/light_bulb_3d.png"
+    "size": "96x96",
+    "bytes": 6025,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Magnifying glass tilted left",
     "file": "magnifying_glass_tilted_left.png",
-    "bytes": 35247,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Magnifying glass tilted left/3D/magnifying_glass_tilted_left_3d.png"
+    "size": "96x96",
+    "bytes": 10601,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Microphone",
     "file": "microphone.png",
-    "bytes": 25256,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Microphone/3D/microphone_3d.png"
+    "size": "96x96",
+    "bytes": 10002,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Money bag",
     "file": "money_bag.png",
-    "bytes": 34132,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Money bag/3D/money_bag_3d.png"
+    "size": "96x96",
+    "bytes": 11013,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Party popper",
     "file": "party_popper.png",
-    "bytes": 42512,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Party popper/3D/party_popper_3d.png"
+    "size": "96x96",
+    "bytes": 15939,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Red heart",
     "file": "red_heart.png",
-    "bytes": 29389,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Red heart/3D/red_heart_3d.png"
+    "size": "96x96",
+    "bytes": 8776,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Rocket",
     "file": "rocket.png",
-    "bytes": 36274,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Rocket/3D/rocket_3d.png"
+    "size": "96x96",
+    "bytes": 12215,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Speech balloon",
     "file": "speech_balloon.png",
-    "bytes": 19211,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Speech balloon/3D/speech_balloon_3d.png"
+    "size": "96x96",
+    "bytes": 4101,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Thumbs up",
     "file": "thumbs_up.png",
-    "bytes": 29710,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Thumbs up/Default/3D/thumbs_up_3d_default.png"
+    "size": "96x96",
+    "bytes": 7495,
+    "source": "Apple Color Emoji © Apple Inc."
   },
   {
-    "name": "Warning",
     "file": "warning.png",
-    "bytes": 22076,
-    "source": "https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Warning/3D/warning_3d.png"
+    "size": "96x96",
+    "bytes": 3847,
+    "source": "Apple Color Emoji © Apple Inc."
   }
 ]

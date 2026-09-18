@@ -1,11 +1,13 @@
-"""Свой набор эмодзи из цветного шрифта — например из Apple Color Emoji.
+"""Набор эмодзи из цветного шрифта — этим собран тот, что лежит в public/emoji.
 
-Зачем отдельный скрипт. Эмодзи Apple нельзя положить в шаблон: шрифт
-лицензирован только для устройств Apple, и в публичном репозитории ему не
-место. Но для своего ролика набор взять можно — со своего же Mac или iPhone.
-Поэтому личные картинки живут отдельно: `public/emoji-local/` не попадает в
-git, а сцены берут оттуда всё, что там нашлось, и падают обратно на набор из
-`public/emoji/` для остального.
+Системный эмодзи рисуется шрифтом операционной системы: на рендере выйдет не
+то, что было в студии, и на чужой машине — третье. Поэтому символы хранятся
+картинками, а этот скрипт достаёт их из файла шрифта.
+
+Два режима. Без флагов картинки идут в `public/emoji-local/` — эта папка не
+попадает в git, и сцены берут оттуда всё, что там нашлось: так держат свой
+набор, не меняя общий. С `--shipped` перезаписывается `public/emoji/`, то есть
+набор всего проекта; тогда не забудьте обновить рядом SOURCES.md.
 
 Где взять файл шрифта:
   macOS    /System/Library/Fonts/Apple Color Emoji.ttc
@@ -123,6 +125,7 @@ def main():
     ap.add_argument("font", type=Path, help="Файл .ttc или .ttf с цветными эмодзи")
     ap.add_argument("--index", type=int, default=0, help="Номер шрифта внутри .ttc")
     ap.add_argument("--clear", action="store_true", help="Убрать личный набор и вернуться к общему")
+    ap.add_argument("--shipped", action="store_true", help="Перезаписать общий набор public/emoji, а не личный")
     args = ap.parse_args()
 
     if args.clear:
@@ -152,7 +155,8 @@ def main():
             "Нужен Apple Color Emoji с Mac или из резервной копии iPhone."
         )
 
-    LOCAL.mkdir(parents=True, exist_ok=True)
+    target = SHIPPED if args.shipped else LOCAL
+    target.mkdir(parents=True, exist_ok=True)
     names = sorted({p.stem for p in SHIPPED.glob("*.png")} | set(CHARACTERS))
     taken, missing = [], []
     for name in names:
@@ -162,20 +166,22 @@ def main():
         if not data:
             missing.append(name)
             continue
-        (LOCAL / f"{name}.png").write_bytes(data)
+        (target / f"{name}.png").write_bytes(data)
         taken.append(name)
 
-    write_manifest(taken)
-    (LOCAL / "README.md").write_text(
-        "# Личный набор эмодзи\n\n"
-        f"Вынут из `{args.font.name}` скриптом `scripts/emoji-from-font.py`.\n\n"
-        "Эта папка не попадает в git намеренно. Шрифты эмодзи Apple лицензированы\n"
-        "только для устройств Apple: использовать их в своём ролике — ваше решение\n"
-        "и ваша ответственность, а распространять вместе с шаблоном нельзя.\n\n"
-        "Вернуться к общему набору: `python scripts/emoji-from-font.py <шрифт> --clear`.\n",
-        encoding="utf-8",
-    )
-    size = sum((LOCAL / f"{n}.png").stat().st_size for n in taken)
+    write_manifest([] if args.shipped else taken)
+    if not args.shipped:
+        (LOCAL / "README.md").write_text(
+            "# Личный набор эмодзи\n\n"
+            f"Вынут из `{args.font.name}` скриптом `scripts/emoji-from-font.py`.\n\n"
+            "Эта папка не попадает в git намеренно: пока она не пуста, сцены берут\n"
+            "символы отсюда, а не из общего набора, и правка остаётся локальной.\n"
+            "Лицензия исходного шрифта — на вас: проверьте, что имеете право им\n"
+            "пользоваться в своём ролике.\n\n"
+            "Вернуться к общему набору: `python scripts/emoji-from-font.py <шрифт> --clear`.\n",
+            encoding="utf-8",
+        )
+    size = sum((target / f"{n}.png").stat().st_size for n in taken)
     print(f"ГОТОВО: взято {len(taken)} символов, {size // 1024} КБ", flush=True)
     if missing:
         print("Не нашлись в шрифте: " + ", ".join(missing), flush=True)

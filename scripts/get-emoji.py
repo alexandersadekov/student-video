@@ -1,4 +1,8 @@
-"""Загрузка объёмных эмодзи Fluent Emoji (Microsoft, лицензия MIT).
+"""Запасной набор эмодзи с открытой лицензией: Fluent Emoji (Microsoft, MIT).
+
+По умолчанию в public/emoji лежат эмодзи Apple — см. SOURCES.md рядом с ними.
+Этот скрипт нужен, если такой набор распространять нельзя: он заменяет его на
+открытый, и сцены продолжают работать без правок (`--force` перезаписывает).
 
 Зачем именно они. Системный эмодзи рисуется шрифтом и выглядит на каждой
 машине по-своему: на рендере в облаке получится не то, что в студии. Плоские
@@ -69,6 +73,7 @@ def main():
     ap = argparse.ArgumentParser(description="Скачать объёмные эмодзи в public/emoji")
     ap.add_argument("--add", nargs="*", default=[], help="Имена символов из набора, например Rocket")
     ap.add_argument("--only", action="store_true", help="Скачать только указанные в --add")
+    ap.add_argument("--force", action="store_true", help="Перезаписать набор, который уже лежит в public/emoji")
     args = ap.parse_args()
 
     names = list(args.add) if args.only else BASE + [n for n in args.add if n not in BASE]
@@ -78,7 +83,7 @@ def main():
 
     added, missing = 0, []
     for name in names:
-        if name in known and (FOLDER / known[name]["file"]).is_file():
+        if not args.force and (FOLDER / f"{slug(name)}.png").is_file():
             continue
         print(f"   {name}", flush=True)
         item = download(name, FOLDER)
