@@ -37,8 +37,15 @@ export const StyleDemo = ({
   const split = active && !fullScreenExplanation;
 
   return (
-    <AbsoluteFill showInTimeline={false} style={{ background: "#111", fontFamily: "Inter" }}>
-      <Sequence name="Субтитры • раскрыть" durationInFrames={200} style={{ zIndex: 2 }}>
+    <AbsoluteFill
+      showInTimeline={false}
+      style={{ background: "#111", fontFamily: "Inter" }}
+    >
+      <Sequence
+        name="Субтитры • раскрыть"
+        durationInFrames={200}
+        style={{ zIndex: 2 }}
+      >
         {CAPTIONS.map((caption) => (
           <Interactive.Div
             key={caption.text}
@@ -52,7 +59,7 @@ export const StyleDemo = ({
               translate: "-50% -50%",
               width: "max-content",
               maxWidth: 850,
-              fontFamily: "Tahoma",
+              fontFamily: "Inter",
               fontSize: 73,
               lineHeight: 1.1,
               color: "white",
@@ -148,7 +155,9 @@ export const StyleDemo = ({
         durationInFrames={200}
         style={{ zIndex: 20, pointerEvents: "none" }}
       >
-        {showGuides && !getRemotionEnvironment().isRendering ? <ProjectGuides opacity={0.4} /> : null}
+        {showGuides && !getRemotionEnvironment().isRendering ? (
+          <ProjectGuides opacity={0.4} />
+        ) : null}
       </Sequence>
     </AbsoluteFill>
   );

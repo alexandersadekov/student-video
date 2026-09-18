@@ -111,7 +111,7 @@ export const MontageStory = ({
         inset: 0,
         background: light ? "#eef1f6" : "#14171d",
         color: light ? "#172333" : "#f1f2f4",
-        fontFamily: "Tahoma",
+        fontFamily: "Inter",
         overflow: "hidden",
       }}
     >
@@ -163,14 +163,14 @@ export const MontageStory = ({
           >
             <Video
               src={source}
-              trimBefore={275}
+              trimBefore={0}
+              objectFit="cover"
               muted
               style={{
                 position: "absolute",
                 inset: 0,
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
               }}
             />
             <div

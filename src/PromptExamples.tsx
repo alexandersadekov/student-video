@@ -27,7 +27,7 @@ export const PromptExamples = () => {
         height: 960,
         overflow: "hidden",
         background: "radial-gradient(ellipse at 50% 48%,#293746,#13181e 75%)",
-        fontFamily: "Tahoma",
+        fontFamily: "Inter",
         color: "white",
       }}
     >
@@ -94,11 +94,22 @@ export const PromptExamples = () => {
                 padding: "2px 15px",
               }}
             >
-              ↑
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 19V5M5 12l7-7 7 7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
-          </div>
-          <div style={{ fontSize: 23, color: "#acb3bd", marginLeft: 35 }}>
-            Иллюстрация ввода
           </div>
         </Interactive.Div>
       ) : (
@@ -127,17 +138,6 @@ export const PromptExamples = () => {
               style={{ width: "100%", height: "100%" }}
             />
           </Interactive.Div>
-          <div
-            style={{
-              position: "absolute",
-              top: 65,
-              left: 170,
-              fontSize: 27,
-              color: "#c4d0df",
-            }}
-          >
-            {command} · пример
-          </div>
         </>
       )}
     </AbsoluteFill>

@@ -23,7 +23,7 @@ export const RemotionRoot = () => (
     <Composition
       id="Scene-Carousel"
       component={CarouselStory}
-      durationInFrames={300}
+      durationInFrames={507}
       fps={25}
       width={1080}
       height={1920}
@@ -31,7 +31,7 @@ export const RemotionRoot = () => (
     <Composition
       id="Scene-Prompts"
       component={PromptExamples}
-      durationInFrames={300}
+      durationInFrames={425}
       fps={25}
       width={1080}
       height={1920}
