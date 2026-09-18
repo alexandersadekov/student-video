@@ -13,6 +13,7 @@ import argparse
 import hashlib
 import json
 import mimetypes
+import re
 import subprocess
 import sys
 import urllib.request
@@ -49,6 +50,8 @@ RESEARCH_EXAMPLE = {
 
 
 def folder_for(project_id):
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", project_id):
+        raise ValueError("Invalid project id")
     folder = PROJECTS / project_id
     if not folder.is_dir():
         sys.exit(f"Проект не найден: {folder}")
@@ -89,9 +92,17 @@ def fetch(project_id):
         name, url = asset.get("name"), asset.get("url", "")
         # Разрешение на использование фиксирует человек или агент-исследователь,
         # поэтому без него файл не скачиваем.
-        missing = [k for k in ("name", "url", "source", "license") if not asset.get(k)]
+        missing = [k for k in ("name", "url", "source", "license", "checked") if not asset.get(k)]
         if missing:
             print(f"пропуск {name or url}: не заполнено {', '.join(missing)}")
+            continue
+        if not re.fullmatch(r"[A-Za-z0-9_-]+", name):
+            print(f"пропуск {name}: имя должно содержать только буквы, цифры, _ или -")
+            continue
+        try:
+            date.fromisoformat(asset["checked"])
+        except (ValueError, TypeError):
+            print(f"пропуск {name}: неверная дата проверки")
             continue
         if not url.startswith("https://"):
             print(f"пропуск {name}: разрешён только https")
@@ -128,7 +139,7 @@ def fetch(project_id):
             "url": url,
             "source": asset["source"],
             "license": asset["license"],
-            "checked": asset.get("checked") or date.today().isoformat(),
+            "checked": asset["checked"],
             "bytes": len(data),
             "sha256": hashlib.sha256(data).hexdigest(),
         }
