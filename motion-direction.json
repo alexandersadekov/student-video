@@ -57,5 +57,26 @@
     "noProductionLabels": true,
     "noRepeatedCommandAboveResult": true,
     "provenance": "metadata files"
+  },
+  "emphasis": {
+    "stressedWord": "selection",
+    "component": "src/scenes/text.tsx SelectedText",
+    "decorativeHighlight": false
+  },
+  "interfaceDemo": {
+    "showInsteadOfChip": true,
+    "arrival": "defocus",
+    "camera": "continuous-push-in",
+    "pressBeforeResult": true,
+    "oneChangePerBeat": true,
+    "typeText": true,
+    "markOnlyKeyFragment": true,
+    "components": "src/scenes/window.tsx"
+  },
+  "progression": {
+    "numbers": "count-up-from-zero",
+    "lists": "accumulate",
+    "negation": "strike-through-what-is-denied",
+    "placeReference": "camera-move-not-arrow"
   }
 }
