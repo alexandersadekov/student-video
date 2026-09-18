@@ -4,6 +4,7 @@ import { CarouselStory } from "./CarouselStory";
 import { PromptExamples } from "./PromptExamples";
 import { StyleDemo } from "./StyleDemo";
 import { ChipLibrary } from "./ChipLibrary";
+import { InterfaceScene } from "./InterfaceScene";
 import { ImportedCompositions } from "./generated/Registry";
 import { LocalCompositions } from "./local/Local";
 import "./index.css";
@@ -67,6 +68,15 @@ export const RemotionRoot = () => (
       id="Chips-Library"
       component={ChipLibrary}
       durationInFrames={240}
+      fps={25}
+      width={1080}
+      height={1920}
+      defaultProps={{ light: false }}
+    />
+    <Composition
+      id="Scene-Interface"
+      component={InterfaceScene}
+      durationInFrames={420}
       fps={25}
       width={1080}
       height={1920}

@@ -51,3 +51,40 @@ export const css = (value: { opacity: number; scale: number; rotate: number }) =
   scale: String(value.scale),
   rotate: `${value.rotate}deg`,
 });
+
+/**
+ * Непрерывный наезд камеры на объект, пока он в кадре.
+ *
+ * В референсе окно приложения не стоит: оно приходит мелким и всё время, пока
+ * о нём говорят, медленно растёт. Зритель не замечает само движение — он
+ * замечает, что кадр не замер. Рост маленький (5–8 %) и линейный: заметный
+ * наезд читается как отдельное событие и спорит с тем, что происходит внутри
+ * окна.
+ */
+export const pushIn = (frame: number, start: number, length: number, amount = 0.07) =>
+  1 + Math.min(1, Math.max(0, (frame - start) / length)) * amount;
+
+/**
+ * Приход объекта из расфокуса: размытие и обесцвечивание сходят на нет.
+ *
+ * Так в референсе появляется каждое окно и каждая карточка. Это не украшение:
+ * пока объект размыт, глаз не пытается его читать и спокойно ждёт. Резко
+ * подставленный в кадр интерфейс зритель начинает разбирать сразу и теряет
+ * речь.
+ */
+export const arrive = (frame: number, start: number, length = 10) => {
+  const raw = Math.min(1, Math.max(0, (frame - start) / length));
+  const eased = EASE(raw);
+  return {
+    opacity: Math.min(1, raw * 3),
+    filter: eased >= 1 ? "none" : `blur(${(1 - eased) * 14}px) saturate(${eased})`,
+    scale: 0.94 + eased * 0.06,
+  };
+};
+
+/** Сколько символов строки уже набрано к этому кадру. */
+export const typed = (frame: number, start: number, perSecond: number, fps: number, total: number) =>
+  Math.max(0, Math.min(total, Math.round(((frame - start) / fps) * perSecond)));
+
+/** Мигание текстового курсора: полсекунды видно, полсекунды нет. */
+export const blink = (frame: number, fps: number) => (frame % fps < fps * 0.55 ? 1 : 0);
