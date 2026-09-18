@@ -3,6 +3,7 @@ import { MotionExamples } from "./MotionExamples";
 import { CarouselStory } from "./CarouselStory";
 import { PromptExamples } from "./PromptExamples";
 import { StyleDemo } from "./StyleDemo";
+import { ChipLibrary } from "./ChipLibrary";
 import { ImportedCompositions } from "./generated/Registry";
 import { LocalCompositions } from "./local/Local";
 import "./index.css";
@@ -61,6 +62,15 @@ export const RemotionRoot = () => (
         fullScreenExplanation: true,
         lightTheme: false,
       }}
+    />
+    <Composition
+      id="Chips-Library"
+      component={ChipLibrary}
+      durationInFrames={240}
+      fps={25}
+      width={1080}
+      height={1920}
+      defaultProps={{ light: false }}
     />
     <ImportedCompositions />
     <LocalCompositions />
