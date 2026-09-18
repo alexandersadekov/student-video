@@ -14,6 +14,12 @@ const stubs = [
       "export const ImportedCompositions = () => <></>;\n",
   },
   {
+    file: path.join(root, "src", "generated", "emoji.ts"),
+    body:
+      "// Заглушка: список личных эмодзи пишет scripts/emoji-from-font.py.\n" +
+      "export const LOCAL_EMOJI: string[] = [];\n",
+  },
+  {
     file: path.join(root, "src", "local", "Local.tsx"),
     body:
       "// Заглушка для личных композиций. Эта папка не попадает в git.\n" +
