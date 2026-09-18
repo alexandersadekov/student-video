@@ -31,3 +31,9 @@ src/local/
 # Кадр из личного ролика и снимок утверждённого пилота
 public/montage4-poster.jpg
 presets/approved-pilot/
+
+# Локальные патчи и авторизация не являются частью шаблона
+*.patch
+.gh-auth/
+gh-auth/
+hosts.yml
